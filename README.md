@@ -7,7 +7,7 @@ Full-stack web application for discovering and managing events in Málaga, Spain
 ## Technologies
 
 **Frontend:**
-- Next.js 16 (Pages Router)
+- Next.js
 - React
 - CSS3 with custom design system
 
@@ -30,7 +30,7 @@ Full-stack web application for discovering and managing events in Málaga, Spain
 - Admin panel to create, edit and delete events
 - Real event images from Málaga
 - Responsive design, mobile first
-- In-page notifications (no browser alerts)
+- In-page notifications
 
 ---
 
