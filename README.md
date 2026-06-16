@@ -1,13 +1,15 @@
-# 🌴 MálagaEvents
+# MálagaEvents
 
-A full-stack web application for discovering and managing events in Málaga, Spain.
+Full-stack web application for discovering and managing events in Málaga, Spain. Users can browse events by category, register, join events and manage their profile. Administrators can create, edit and delete events through the API.
 
-## 🚀 Technologies
+---
+
+## Technologies
 
 **Frontend:**
-- Next.js 16
+- Next.js 16 (Pages Router)
 - React
-- CSS3
+- CSS3 with custom design system
 
 **Backend:**
 - Node.js
@@ -15,20 +17,40 @@ A full-stack web application for discovering and managing events in Málaga, Spa
 - MongoDB Atlas
 - Mongoose
 - JWT Authentication
-- Bcrypt
+- Bcrypt for password encryption
 
-## ✨ Features
+---
 
-- Browse and filter events by category
-- User registration and login with JWT
-- Event detail with attendee count
-- Join and leave events
-- User profile
+## Features
+
+- Browse all events with category filters and pagination
+- User registration and login with JWT tokens
+- Event detail page with attendee count and join/leave functionality
+- User profile with avatar and password update
 - Admin panel to create, edit and delete events
-- Pagination
-- Mobile first responsive design
+- Real event images from Málaga
+- Responsive design, mobile first
+- In-page notifications (no browser alerts)
 
-## 📦 Installation
+---
+
+## Project Structure
+
+malaga-events/
+
+├── backend/
+│   ├── Controllers/
+│   ├── Models/
+│   ├── middleware/
+│   ├── router/
+│   └── app.js
+└── frontend/
+└── src/
+├── api/
+├── components/
+└── pages/
+
+## Installation
 
 **Backend:**
 ```bash
@@ -37,6 +59,8 @@ npm install
 npm run dev
 ```
 
+Server runs on http://localhost:9000
+
 **Frontend:**
 ```bash
 cd frontend
@@ -44,41 +68,50 @@ npm install
 npm run dev
 ```
 
-## 🔑 Environment Variables
+App runs on http://localhost:3000
 
-Create a `.env` file in the backend folder:
+---
+
+## Environment Variables
+
+Create a `.env` file inside the `backend` folder:
+
 PORT=9000
 
 DATABASE_URL=your_mongodb_atlas_url
 
 TOKEN_SECRET=your_secret_key
 
-## 📡 API Endpoints
+## API Endpoints
 
 **Auth:**
-- POST `/auth/signup` — Register user
-- POST `/auth/login` — Login user
+- POST `/auth/signup` — Register a new user
+- POST `/auth/login` — Login and receive JWT token
 
 **Events:**
-- GET `/events` — Get all events
+- GET `/events` — Get all events (supports category filter and pagination)
 - GET `/events/:id` — Get event by ID
-- POST `/events` — Create event (admin)
-- PATCH `/events/:id` — Update event (admin)
-- DELETE `/events/:id` — Delete event (admin)
-- POST `/events/:id/join` — Join event
-- DELETE `/events/:id/leave` — Leave event
+- POST `/events` — Create a new event (admin only)
+- PATCH `/events/:id` — Update event (admin only)
+- DELETE `/events/:id` — Delete event (admin only)
+- POST `/events/:id/join` — Join an event (requires token)
+- DELETE `/events/:id/leave` — Leave an event (requires token)
 
 **User:**
-- GET `/user/profile` — Get profile
-- PATCH `/user/profile` — Update profile
-- PATCH `/user/password` — Update password
+- GET `/user/profile` — Get current user profile (requires token)
+- PATCH `/user/profile` — Update profile avatar (requires token)
+- PATCH `/user/password` — Update password (requires token)
 
-## 👨‍💻 Author
+---
 
-**Sergio Picón**
+## Author
+
+Sergio Picon
 - GitHub: [@Piconazo](https://github.com/Piconazo)
-- Location: Málaga, Spain
+- Location: Malaga, Spain
 
-## 📄 License
+---
+
+## License
 
 MIT
