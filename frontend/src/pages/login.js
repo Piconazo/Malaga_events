@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import Menu from "../components/Menu";
 import { login } from "../api/authFetch";
 import Link from "next/link";
+import Footer from "../components/Footer";
 
 export default function Login() {
   const router = useRouter();
@@ -60,6 +61,7 @@ export default function Login() {
           ¿No tienes cuenta? <Link href="/register">Regístrate</Link>
         </p>
       </div>
+      <Footer />
     </div>
   );
 }

@@ -3,7 +3,7 @@ const Event = require("../Models/eventModel");
 // GET — Obtener todos los eventos
 const getEvents = async (req, res) => {
   try {
-    const { category, page = 1, limit = 9 } = req.query;
+    const { category, page = 1, limit = 20 } = req.query;
     const filter = category ? { category } : {};
 
     const events = await Event.find(filter)
@@ -101,13 +101,11 @@ const joinEvent = async (req, res) => {
     event.attendees.push(req.user.id);
     await event.save();
 
-    res
-      .status(200)
-      .json({
-        status: "Success",
-        message: "Inscripción correcta",
-        data: event,
-      });
+    res.status(200).json({
+      status: "Success",
+      message: "Inscripción correcta",
+      data: event,
+    });
   } catch (error) {
     res.status(400).json({ status: "Error", error: error.message });
   }

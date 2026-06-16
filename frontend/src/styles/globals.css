@@ -215,14 +215,15 @@ nav {
 
 /* FORMS */
 .form-container {
-  max-width: 500px;
+  max-width: 900px;
+  width: 90%;
+  min-height: 500px;
   margin: 40px auto;
   background: white;
   padding: 40px;
   border-radius: 12px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
-
 .form-container h1 {
   margin-bottom: 25px;
   color: #1a1a2e;
@@ -323,4 +324,124 @@ input:focus {
 h1 {
   padding: 30px 30px 0;
   color: #1a1a2e;
+}
+/* NOTIFICATION */
+.notification {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 15px 25px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  z-index: 1000;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  min-width: 300px;
+  justify-content: space-between;
+}
+
+.notification-success {
+  background-color: #2ecc71;
+  color: white;
+}
+
+.notification-error {
+  background-color: #e74c3c;
+  color: white;
+}
+
+.notification button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
+}
+
+/* FOOTER */
+.footer {
+  background-color: #1a1a2e;
+  color: #ccc;
+  margin-top: 60px;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  padding: 40px 60px;
+  gap: 40px;
+}
+
+.footer-brand h3 {
+  color: #ffd700;
+  font-size: 1.5em;
+  margin-bottom: 10px;
+}
+
+.footer-brand p {
+  color: #aaa;
+  font-size: 14px;
+}
+
+.footer-links h4,
+.footer-contact h4 {
+  color: white;
+  margin-bottom: 15px;
+  font-size: 16px;
+}
+
+.footer-links ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-links ul li {
+  margin-bottom: 8px;
+}
+
+.footer-links ul li a {
+  color: #aaa;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.footer-links ul li a:hover {
+  color: #ffd700;
+}
+
+.footer-contact p {
+  color: #aaa;
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+.footer-bottom {
+  border-top: 1px solid #333;
+  padding: 20px 60px;
+  text-align: center;
+}
+
+.footer-bottom p {
+  color: #777;
+  font-size: 13px;
+}
+
+#__next {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+#__next > div {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.footer {
+  margin-top: auto;
 }

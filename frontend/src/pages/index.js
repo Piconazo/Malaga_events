@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import Menu from "../components/Menu";
 import EventCard from "../components/EventCard";
+import Footer from "../components/Footer";
 import { getEvents } from "../api/eventFetch";
 
 export default function Home() {
@@ -20,7 +21,7 @@ export default function Home() {
     <div>
       <Menu />
       <section className="hero">
-        <h1>Descubre los mejores eventos de Málaga 🌴</h1>
+        <h1>Descubre los mejores eventos de Málaga</h1>
         <p>Conciertos, deportes, gastronomía, cultura y mucho más</p>
         <button className="btn-primary" onClick={() => router.push("/events")}>
           Ver todos los eventos
@@ -35,6 +36,7 @@ export default function Home() {
           ))}
         </div>
       </section>
+      <Footer />
     </div>
   );
 }

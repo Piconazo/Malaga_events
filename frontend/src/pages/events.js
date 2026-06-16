@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Menu from "../components/Menu";
 import EventCard from "../components/EventCard";
 import { getEvents } from "../api/eventFetch";
+import Footer from "../components/Footer";
 
 export default function Events() {
   const [events, setEvents] = useState([]);
@@ -31,7 +32,7 @@ export default function Events() {
   return (
     <div>
       <Menu />
-      <h1>🎉 Eventos en Málaga</h1>
+      <h1>Eventos en Málaga</h1>
 
       <div className="filters">
         <button
@@ -62,7 +63,7 @@ export default function Events() {
 
       <div className="pagination">
         <button disabled={page === 1} onClick={() => setPage(page - 1)}>
-          ← Anterior
+          Anterior
         </button>
         <span>
           Página {page} de {totalPages}
@@ -71,9 +72,10 @@ export default function Events() {
           disabled={page === totalPages}
           onClick={() => setPage(page + 1)}
         >
-          Siguiente →
+          Siguiente
         </button>
       </div>
+      <Footer />
     </div>
   );
 }

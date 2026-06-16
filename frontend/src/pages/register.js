@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import Menu from "../components/Menu";
 import { signup } from "../api/authFetch";
 import Link from "next/link";
+import Footer from "../components/Footer";
 
 export default function Register() {
   const router = useRouter();
@@ -83,6 +84,7 @@ export default function Register() {
           ¿Ya tienes cuenta? <Link href="/login">Inicia sesión</Link>
         </p>
       </div>
+      <Footer />
     </div>
   );
 }

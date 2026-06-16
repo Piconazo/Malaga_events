@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import Menu from "../../components/Menu";
+import Notification from "../../components/Notification";
 import { getEventById, joinEvent, leaveEvent } from "../../api/eventFetch";
+import Footer from "../../components/Footer";
 
 export default function EventPage() {
   const router = useRouter();
@@ -10,6 +12,7 @@ export default function EventPage() {
   const [user, setUser] = useState(null);
   const [token, setToken] = useState(null);
   const [isAttending, setIsAttending] = useState(false);
+  const [notification, setNotification] = useState({ message: "", type: "" });
 
   useEffect(() => {
     const userData = localStorage.getItem("user");
@@ -34,18 +37,28 @@ export default function EventPage() {
 
   const handleJoin = async () => {
     const data = await joinEvent(id, token);
-    alert(data.message);
-    const updated = await getEventById(id);
-    setEvent(updated.data);
-    setIsAttending(true);
+    setNotification({
+      message: data.message,
+      type: data.status === "Success" ? "success" : "error",
+    });
+    if (data.status === "Success") {
+      const updated = await getEventById(id);
+      setEvent(updated.data);
+      setIsAttending(true);
+    }
   };
 
   const handleLeave = async () => {
     const data = await leaveEvent(id, token);
-    alert(data.message);
-    const updated = await getEventById(id);
-    setEvent(updated.data);
-    setIsAttending(false);
+    setNotification({
+      message: data.message,
+      type: data.status === "Success" ? "success" : "error",
+    });
+    if (data.status === "Success") {
+      const updated = await getEventById(id);
+      setEvent(updated.data);
+      setIsAttending(false);
+    }
   };
 
   const formatDate = (date) => {
@@ -59,11 +72,18 @@ export default function EventPage() {
   return (
     <div>
       <Menu />
+      {notification.message && (
+        <Notification
+          message={notification.message}
+          type={notification.type}
+          onClose={() => setNotification({ message: "", type: "" })}
+        />
+      )}
       <button
         onClick={() => router.push("/events")}
         style={{ margin: "20px 30px" }}
       >
-        ← Volver a eventos
+        Volver a eventos
       </button>
       <div className="event-detail">
         <img src={event.image} alt={event.title} className="event-detail-img" />
@@ -71,14 +91,14 @@ export default function EventPage() {
           <span className="event-category">{event.category}</span>
           <h1>{event.title}</h1>
           <p>{event.description}</p>
-          <p>📍 {event.location}</p>
-          <p>📅 {formatDate(event.date)}</p>
-          <p>💶 {event.price === 0 ? "Gratis" : `${event.price}€`}</p>
+          <p>{event.location}</p>
+          <p>{formatDate(event.date)}</p>
+          <p>{event.price === 0 ? "Entrada gratuita" : `${event.price}€`}</p>
           <p>
-            👥 {event.attendees.length}/{event.capacity} asistentes
+            {event.attendees.length}/{event.capacity} asistentes
           </p>
           <p>
-            🎯 Organizado por: {event.organizer.name} {event.organizer.lastName}
+            Organizado por: {event.organizer.name} {event.organizer.lastName}
           </p>
 
           {token &&
@@ -88,7 +108,7 @@ export default function EventPage() {
               </button>
             ) : (
               <button className="btn-primary" onClick={handleJoin}>
-                ¡Inscribirme!
+                Inscribirme
               </button>
             ))}
           {!token && (
@@ -98,6 +118,7 @@ export default function EventPage() {
           )}
         </div>
       </div>
+      <Footer />
     </div>
   );
 }

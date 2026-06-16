@@ -20,7 +20,7 @@ export default function Menu() {
   return (
     <nav>
       <div className="nav-brand">
-        <Link href="/">🌴 MálagaEvents</Link>
+        <Link href="/">MálagaEvents</Link>
       </div>
       <div className="nav-links">
         <Link href="/">Inicio</Link>

@@ -17,21 +17,21 @@ export default function EventCard({ event }) {
       <div className="event-card-body">
         <span className="event-category">{event.category}</span>
         <h3 className="event-title">{event.title}</h3>
-        <p className="event-location">📍 {event.location}</p>
-        <p className="event-date">📅 {formatDate(event.date)}</p>
+        <p className="event-location">{event.location}</p>
+        <p className="event-date">{formatDate(event.date)}</p>
         <div className="event-footer">
           <span className="event-price">
-            {event.price === 0 ? "Gratis" : `${event.price}€`}
+            {event.price === 0 ? "Entrada gratuita" : `${event.price}€`}
           </span>
           <span className="event-capacity">
-            👥 {event.attendees.length}/{event.capacity}
+            {event.attendees.length}/{event.capacity} asistentes
           </span>
         </div>
         <button
           className="btn-primary"
           onClick={() => router.push(`/event/${event._id}`)}
         >
-          Ver detalle →
+          Ver detalle
         </button>
       </div>
     </div>
